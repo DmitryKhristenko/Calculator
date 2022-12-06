@@ -8,13 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     @IBOutlet weak var displayLabel: UILabel!
-    
     private var isFinishedTypingNumber: Bool = true
     var displayValue: Double {
         get {
@@ -34,12 +31,9 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     private var calculator = CalculatorLogic()
-    
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         // What should happen when a non-number button is pressed.
-        
         isFinishedTypingNumber = true
         calculator.setNumber(displayValue)
         if let calcMethod = sender.currentTitle {
@@ -48,9 +42,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     @IBAction func numButtonPressed(_ sender: UIButton) {
-        
         if let numValue = sender.currentTitle {
             if isFinishedTypingNumber {
                 // this part does not allow to add a second dot to displayLabel.text
@@ -68,7 +60,4 @@ class ViewController: UIViewController {
             }
         }
     }
-    
 }
-
-
