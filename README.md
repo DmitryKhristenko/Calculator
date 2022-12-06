@@ -9,4 +9,4 @@ The goal for this project is to create a basic calculator that supports the foll
 - Supports landscape orientation.
 
 
-![](calc_gif.gif)
+![](calc_gif2.gif)
