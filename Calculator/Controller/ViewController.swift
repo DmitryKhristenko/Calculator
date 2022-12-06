@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("working")
     }
     
     @IBOutlet weak var displayLabel: UILabel!
@@ -21,25 +20,32 @@ class ViewController: UIViewController {
         get {
             // force unwrap is safe here because displayLabel.text is always has a value
             guard let number = Double(displayLabel.text!) else {
-                fatalError("Cannot convert display label text to a Double")
+                return 0
             }
             return number
         }
         set {
-            displayLabel.text = String(newValue)
+            let isInt = floor(newValue) == newValue
+            if isInt {
+                // Remove the .0
+                displayLabel.text = String(format: "%.0f", newValue)
+            } else {
+                displayLabel.text = String(newValue)
+            }
         }
     }
+    
+    private var calculator = CalculatorLogic()
     
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         // What should happen when a non-number button is pressed.
         
         isFinishedTypingNumber = true
+        calculator.setNumber(displayValue)
         if let calcMethod = sender.currentTitle {
-            let calculator = CalculatorLogic(number: displayValue)
-            guard let result = calculator.calculate(symbol: calcMethod) else {
-                fatalError("The result of the calculation is nil.")
+            if let result = calculator.calculate(symbol: calcMethod) {
+                displayValue = result
             }
-            displayValue = result
         }
     }
     
@@ -62,6 +68,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
 }
 
 
