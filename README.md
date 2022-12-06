@@ -8,4 +8,5 @@ The goal for this project is to create a basic calculator that supports the foll
 - Decimal values also supported;
 - Supports landscape orientation.
 
+
 ![](calc_gif.gif)
