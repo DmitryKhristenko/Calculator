@@ -2,7 +2,9 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-.xcuserdata
+*.xcuserdata
+*/xcuserdata/*
+*xcworkspace/xcuserdata/*
 
 # Icon must end with two \r
 Icon
